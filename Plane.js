@@ -7,6 +7,7 @@ class Plane {
     speedY;
     img;
     score;
+    live;
 
     constructor(width, height, x, y, speedX, speedY, img) {
         this.width = width;
@@ -19,6 +20,7 @@ class Plane {
         this.defaultSpeedX = speedX;
         this.defaultSpeedY = speedY;
         this.score = 0;
+        this.live =2 ;
     }
 
     draw(ctx) {
