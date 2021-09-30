@@ -4,7 +4,8 @@ class Bullet{
     width;
     height;
     img;
-    speed;
+    speedX;
+    speedY;
 
     constructor(x, y, width, height, img,speed) {
         this.x = x;

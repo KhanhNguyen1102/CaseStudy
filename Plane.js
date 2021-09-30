@@ -7,6 +7,7 @@ class Plane {
     speedY;
     img;
     score;
+
     constructor(width, height, x, y, speedX, speedY, img) {
         this.width = width;
         this.height = height;
@@ -36,31 +37,45 @@ class Plane {
     }
 
     moveTop() {
-        this.speedY = this.defaultSpeedY;
-        this.y -= this.speedY;
-        this.speedX = 0
-        this.x += this.speedX;
+        let y = this.y
+        if (y > 0) {
+            this.speedY = this.defaultSpeedY;
+            this.y -= this.speedY;
+            this.speedX = 0
+            this.x += this.speedX;
+        }
     }
 
     moveBot() {
-        this.speedY = this.defaultSpeedY;
-        this.y += this.speedY;
-        this.speedX = 0
-        this.x += this.speedX;
+        let y = this.y;
+        let height = this.height;
+        if (y < 700 - height) {
+            this.speedY = this.defaultSpeedY;
+            this.y += this.speedY;
+            this.speedX = 0
+            this.x += this.speedX;
+        }
     }
 
     moveRight() {
-        this.speedX = this.defaultSpeedX;
-        this.x += this.speedX;
-        this.speedY = 0;
-        this.y += this.speedY
+        let x = this.x
+        let width = this.width
+        if (x < 1500 - width) {
+            this.speedX = this.defaultSpeedX;
+            this.x += this.speedX;
+            this.speedY = 0;
+            this.y += this.speedY
+        }
     }
 
     moveLeft() {
-        this.speedX = this.defaultSpeedX;
-        this.x -= this.speedX;
-        this.speedY = 0;
-        this.y += this.speedY
+        let x = this.x
+        if (x > 0) {
+            this.speedX = this.defaultSpeedX;
+            this.x -= this.speedX;
+            this.speedY = 0;
+            this.y += this.speedY
+        }
     }
 
     move() {
@@ -80,25 +95,8 @@ class Plane {
         }
     }
 
-    // check() {
-    //     if ((50 <= this.x && this.x <= 300 && this.y === 150) ||
-    //         (this.x === 50 && 150 <= this.y && this.y <= 300) ||
-    //         (50 <= this.x && this.x <= 300 && this.y === 300) ||
-    //         (this.x === 300 && 150 <= this.y && this.y <= 300)) {
-    //         setTimeout(() => {
-    //             alert('game over')
-    //         }, 300)
-    //         setTimeout(start, 300);
-    //     }
-    //     if ((450 <= this.x && this.x <= 550 && this.y === 450) ||
-    //         (this.x === 450 && 450 <= this.y && this.y <= 550) ||
-    //         (50 <= this.x && this.x <= 550 && this.y === 550) ||
-    //         (this.x === 550 && 450 <= this.y && this.y <= 550)){
-    //         if(cheese.isEmpty === false){
-    //             jerry.score++;
-    //         }
-    //         cheese.isEmpty = true;
-    //     }
-    // }
-
+    fire() {
+        let bullet1 = new Bullet(susu.x + susu.width / 2 - 18, susu.y - 49, 41, 49, "bullet1.png", 2)
+        bullet.push(bullet1);
+    }
 }
