@@ -7,16 +7,14 @@ class Enemy {
     speedY;
     img;
 
-    constructor(width, height, x, y,img) {
+    constructor(width, height, x, y, img) {
         this.width = width;
         this.height = height;
         this.x = x;
         this.y = y;
-        // this.speedX = speedX;
-        // this.speedY = speedY;
         this.img = img;
-        // this.defaultSpeedX = speedX;
-        // this.defaultSpeedY = speedY;
+        this.speedX = 0;
+        this.speedY = 2;
     }
 
     draw(ctx) {
@@ -33,31 +31,11 @@ class Enemy {
         ctx.closePath()
     }
 
-    // moveTop() {
-    //     this.speedY = this.defaultSpeedY;
-    //     this.y -= this.speedY;
-    //     this.speedX = 0
-    //     this.x += this.speedX;
-    // }
-    //
-    // moveBot() {
-    //     this.speedY = this.defaultSpeedY;
-    //     this.y += this.speedY;
-    //     this.speedX = 0
-    //     this.x += this.speedX;
-    // }
-    //
-    // moveRight() {
-    //     this.speedX = this.defaultSpeedX;
-    //     this.x += this.speedX;
-    //     this.speedY = 0;
-    //     this.y += this.speedY
-    // }
-    //
-    // moveLeft() {
-    //     this.speedX = this.defaultSpeedX;
-    //     this.x -= this.speedX;
-    //     this.speedY = 0;
-    //     this.y += this.speedY
-    // }
+    move() {
+        if (this.x > 1500 - this.width || this.x < 0) {
+            this.speedX = -this.speedX;
+        }
+        this.x+=this.speedX;
+        this.y += this.speedY;
+    }
 }
