@@ -38,7 +38,7 @@ class Plane {
 
     moveTop() {
         let y = this.y
-        if (y > 0) {
+        if (y > 60) {
             this.speedY = this.defaultSpeedY;
             this.y -= this.speedY;
             this.speedX = 0

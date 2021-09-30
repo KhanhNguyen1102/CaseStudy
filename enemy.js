@@ -6,6 +6,7 @@ class Enemy {
     speedX;
     speedY;
     img;
+    status;
 
     constructor(width, height, x, y, img) {
         this.width = width;
@@ -15,20 +16,23 @@ class Enemy {
         this.img = img;
         this.speedX = 0;
         this.speedY = 2;
+        this.status= true;
     }
 
     draw(ctx) {
-        ctx.beginPath();
-        let img = new Image();
-        let width = this.width;
-        let height = this.height;
-        let x = this.x;
-        let y = this.y;
-        img.onload = function () {
-            ctx.drawImage(img, x, y, width, height);
+        if(this.status) {
+            ctx.beginPath();
+            let img = new Image();
+            let width = this.width;
+            let height = this.height;
+            let x = this.x;
+            let y = this.y;
+            img.onload = function () {
+                ctx.drawImage(img, x, y, width, height);
+            }
+            img.src = this.img;
+            ctx.closePath()
         }
-        img.src = this.img;
-        ctx.closePath()
     }
 
     move() {
