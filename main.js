@@ -35,8 +35,14 @@ function shoot() {
 }
 
 function bossShoot() {
-    if (((susu.score > 15)&&(susu.score <41)) ||((susu.score > 62)&&(susu.score <120))) {
+    if ((susu.score > 16) && (susu.score < 41)) {
         boss.fire();
+    }
+
+    if ((susu.score > 60) && (susu.score < 120)) {
+
+        boss.fire();
+
     }
 }
 
@@ -51,7 +57,7 @@ function createEnemy() {
 function changeSpeedEnemy() {
     for (let i = 0; i < enemy.length; i++) {
         enemy[i].speedX = Math.random() * 10 - 5;
-        if (susu.score >41 ){
+        if (susu.score > 41) {
             enemy[i].speedY = 4;
         }
     }
@@ -68,10 +74,11 @@ function drawBullet() {
 }
 
 function drawBulletBoss() {
-    if (boss.health > 0) {
+
+    if (boss.status === 1 && bulletBoss.length > 3 && susu.score > 15) {
         for (let i = 0; i < bulletBoss.length; i++) {
             bulletBoss[i].move();
-            if ((bulletBoss[i].x < -200)||(bulletBoss[i].x > 1700)||(bulletBoss[i].y > 900)) {
+            if ((bulletBoss[i].x < -200) || (bulletBoss[i].x > 1700) || (bulletBoss[i].y > 900)) {
                 bulletBoss.splice(bulletBoss.indexOf(bulletBoss[i]), 1)
             }
             bulletBoss[i].draw(ctx);
@@ -158,22 +165,23 @@ function checkBulletHitBoss() {
             if (boss.health === 0 && boss.status === 1) {
                 boss.img = "boom1.png";
                 boss.status = 2;
-                susu.score +=25;
+                susu.score += 25;
             }
         }
     }
 }
 
-function checkBulletHitPlane(){
-    for (let i = 0; i < bulletBoss.length; i++){
-        if ((bulletBoss[i].x >= susu.x - 45 ) && (bulletBoss[i].x <= susu.x +112 )&& (bulletBoss[i].y >= susu.y - 45 )&&(bulletBoss[i].y <= susu.y +61 )){
-            if (bulletBoss[i].status){
+function checkBulletHitPlane() {
+    for (let i = 0; i < bulletBoss.length; i++) {
+        if ((bulletBoss[i].x >= susu.x - 45) && (bulletBoss[i].x <= susu.x + 112) && (bulletBoss[i].y >= susu.y - 45) && (bulletBoss[i].y <= susu.y + 61)) {
+            if (bulletBoss[i].status) {
                 susu.live--;
             }
-            bulletBoss[i].status =false;
+            bulletBoss[i].status = false;
         }
     }
 }
+
 function drawScore() {
     ctx.font = "25px Arial";
     ctx.fillStyle = "#dddb00";
@@ -185,47 +193,65 @@ function drawLives() {
     ctx.fillStyle = "#b8dd00";
     ctx.fillText("Lives: " + susu.live, 1400, 20);
 }
+
 function checkEnd() {
-    if (susu.live ===0 ){
-        function a(){
+    if (susu.live === 0) {
+        function a() {
             alert("Game Over")
             location.reload()
         }
-        setTimeout(a,100)
-        susu.live = -1;
+
+        setTimeout(a, 100)
+        start();
     }
 }
+function checkWin(){
+    if (boss.status===3 && susu.score>60){
+        function a() {
+            alert("You Winnnnn!")
+            location.reload()
+        }
+
+        setTimeout(a, 1)
+        start()
+    }
+}
+
 function drawHealthBoss() {
     ctx.font = "25px Arial";
     ctx.fillStyle = "#b8dd00";
     ctx.fillText("Health: " + boss.health, 0, 50);
 }
-function drawBoss(){
-    if (susu.score  === 60){
-        boss.status = 1 ;
-        boss.health = 20 ;
+
+function drawBoss() {
+    if (susu.score === 60) {
+        boss.status = 1;
+        boss.health = 20;
         boss.img = "boss1.png";
-        susu.score ++;
+        susu.score++;
+        bulletBoss = [];
     }
     boss.draw(ctx);
 }
+
 function play() {
     susu.move();
     boss.move();
     susu.draw(ctx);
+    drawBoss();
     drawBullet();
-    drawBulletBoss();
     drawEnemy();
     drawScore();
     drawLives();
-    drawBoss();
     drawHealthBoss();
+    drawBulletBoss();
     checkBulletHitEnemy();
     checkPlaneHitEnemy();
     checkPlaneHitBoss();
     checkBulletHitBoss();
     checkBulletHitPlane();
     checkEnd();
+    checkWin();
     requestAnimationFrame(play);
 }
 
@@ -235,6 +261,7 @@ let bullet;
 var enemy;
 var boss;
 let bulletBoss;
+
 start();
 play();
 setInterval(shoot, 500)
