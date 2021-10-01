@@ -172,12 +172,14 @@ function checkBulletHitBoss() {
 }
 
 function checkBulletHitPlane() {
-    for (let i = 0; i < bulletBoss.length; i++) {
-        if ((bulletBoss[i].x >= susu.x - 45) && (bulletBoss[i].x <= susu.x + 112) && (bulletBoss[i].y >= susu.y - 45) && (bulletBoss[i].y <= susu.y + 61)) {
-            if (bulletBoss[i].status) {
-                susu.live--;
+    if ((susu.score > 15 && susu.score < 41) || (susu.score > 60)) {
+        for (let i = 0; i < bulletBoss.length; i++) {
+            if ((bulletBoss[i].x >= susu.x - 45) && (bulletBoss[i].x <= susu.x + 112) && (bulletBoss[i].y >= susu.y - 45) && (bulletBoss[i].y <= susu.y + 61)) {
+                if (bulletBoss[i].status) {
+                    susu.live--;
+                }
+                bulletBoss[i].status = false;
             }
-            bulletBoss[i].status = false;
         }
     }
 }
@@ -205,8 +207,9 @@ function checkEnd() {
         start();
     }
 }
-function checkWin(){
-    if (boss.status===3 && susu.score>60){
+
+function checkWin() {
+    if (boss.status === 3 && susu.score > 60) {
         function a() {
             alert("You Winnnnn!")
             location.reload()
@@ -218,10 +221,10 @@ function checkWin(){
 }
 
 function drawHealthBoss() {
-    if ((susu.score >15)||(susu.score >60)){
-    ctx.font = "25px Arial";
-    ctx.fillStyle = "#b8dd00";
-    ctx.fillText("Boss's health: " + boss.health, 0, 50);
+    if ((susu.score > 15 && susu.score < 41) || (susu.score > 60)) {
+        ctx.font = "25px Arial";
+        ctx.fillStyle = "#b8dd00";
+        ctx.fillText("Boss's health: " + boss.health, 0, 50);
     }
 }
 
