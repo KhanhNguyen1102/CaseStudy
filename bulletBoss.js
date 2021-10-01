@@ -1,4 +1,4 @@
-class Bullet {
+class BulletBoss {
     x;
     y;
     width;
@@ -8,14 +8,15 @@ class Bullet {
     speedY;
     status;
 
-    constructor(x, y, width, height, img, speed) {
+    constructor(x, y, width, height, img, speedY,speedX) {
         this.x = x;
         this.y = y;
         this.width = width;
         this.height = height;
         this.img = img;
-        this.speed = speed;
+        this.speedY = speedY;
         this.status = true;
+        this.speedX = speedX;
     }
 
     draw(ctx) {
@@ -35,6 +36,7 @@ class Bullet {
     }
 
     move() {
-        this.y -= this.speed;
+        this.y += this.speedY;
+        this.x += this.speedX;
     }
 }

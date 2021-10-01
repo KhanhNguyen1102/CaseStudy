@@ -20,7 +20,7 @@ class Plane {
         this.defaultSpeedX = speedX;
         this.defaultSpeedY = speedY;
         this.score = 0;
-        this.live =2 ;
+        this.live =3 ;
     }
 
     draw(ctx) {
