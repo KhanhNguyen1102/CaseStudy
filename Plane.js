@@ -98,7 +98,7 @@ class Plane {
     }
 
     fire() {
-        let bullet1 = new Bullet(susu.x + susu.width / 2 - 18, susu.y - 49, 41, 49, "bullet1.png", 2)
+        let bullet1 = new Bullet(susu.x + susu.width / 2 - 18, susu.y - 49, 41, 49, "bullet1.png", 4)
         bullet.push(bullet1);
     }
 }

@@ -64,11 +64,11 @@ class Boss {
     }
 
     fire() {
-        let bullet3 = new BulletBoss(boss.x + boss.width / 2, boss.y + 215, 45, 45, "bossbullet12.png", 2, -2)
+        let bullet3 = new BulletBoss(boss.x + boss.width / 2, boss.y + 215, 45, 45, "bossbullet12.png", 4, -4)
         bulletBoss.push(bullet3);
-        let bullet2 = new BulletBoss(boss.x + boss.width / 2, boss.y + 215, 45, 45, "bossbullet12.png", 2, 0)
+        let bullet2 = new BulletBoss(boss.x + boss.width / 2, boss.y + 215, 45, 45, "bossbullet12.png", 4, 0)
         bulletBoss.push(bullet2);
-        let bullet4 = new BulletBoss(boss.x + boss.width / 2, boss.y + 215, 45, 45, "bossbullet12.png", 2, 2)
+        let bullet4 = new BulletBoss(boss.x + boss.width / 2, boss.y + 215, 45, 45, "bossbullet12.png", 4, 4)
         bulletBoss.push(bullet4);
     }
 }

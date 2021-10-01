@@ -1,5 +1,5 @@
 function start() {
-    susu = new Plane(112, 61, 600, 600, 4, 4, "planeSuper1.png", "top")
+    susu = new Plane(112, 61, 600, 600, 6, 6, "planeSuper1.png", "top")
     bullet = [];
     bulletBoss = [];
     enemy = [];
@@ -269,4 +269,4 @@ play();
 setInterval(shoot, 500)
 setInterval(createEnemy, 500)
 setInterval(changeSpeedEnemy, 1500)
-setInterval(bossShoot, 1500)
+setInterval(bossShoot, 1100)
