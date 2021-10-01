@@ -218,9 +218,11 @@ function checkWin(){
 }
 
 function drawHealthBoss() {
+    if ((susu.score >15)||(susu.score >60)){
     ctx.font = "25px Arial";
     ctx.fillStyle = "#b8dd00";
-    ctx.fillText("Health: " + boss.health, 0, 50);
+    ctx.fillText("Boss's health: " + boss.health, 0, 50);
+    }
 }
 
 function drawBoss() {
