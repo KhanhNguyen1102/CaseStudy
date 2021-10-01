@@ -3,8 +3,23 @@
 <head>
     <meta charset="UTF-8">
     <title>Title</title>
-</head>
-<body>
+   <style>
+       canvas{
+           border: 1px solid black;
+           background: url("screen.jpg");
+       }
 
+   </style>
+
+
+<body onload="doReady()">
+<canvas id="myCanvas" width="1500" height="700" ></canvas>
+
+<script src="Plane.js"></script>
+<script src="bullet.js"></script>
+<script src="enemy.js"></script>
+<script src="boss.js"></script>
+<script src="bulletBoss.js"></script>
+<script src="main.js"></script>
 </body>
 </html>

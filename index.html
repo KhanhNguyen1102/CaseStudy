@@ -3,22 +3,35 @@
 <head>
     <meta charset="UTF-8">
     <title>Title</title>
-   <style>
-       canvas{
-           border: 1px solid black;
-           background: url("screen.jpg");
-       }
-   </style>
-
-
-<body onload="doReady()">
-<canvas id="myCanvas" width="1500" height="700" ></canvas>
-
-<script src="Plane.js"></script>
-<script src="bullet.js"></script>
-<script src="enemy.js"></script>
-<script src="boss.js"></script>
-<script src="bulletBoss.js"></script>
-<script src="main.js"></script>
+    <style>
+        body{
+            background: url("43007492.jpg");
+        }
+        a{
+            color: yellow;
+            position: relative;
+            top: 30px;
+            left: 160px;
+        }
+        td{
+            border: 1px solid black;
+            color: #e0205b;
+            text-align: center;
+            font-size: 30px;
+            background-color: chartreuse;
+            border-radius: 5px;
+        }
+    </style>
+</head>
+<body>
+<audio id="myAudio" controls autoplay style="display: none">
+    <source src="startSound.mp3" type="audio/mpeg">
+</audio>
+<h1><a style="text-decoration: none" href="index1.html">Start game</a></h1> <br>
+<table>
+    <tr>
+        <td>Luật chơi <br> Tiêu diệt mọi kẻ địch để chiến thắng <br> Đừng để trúng đạn hoặc va vào kẻ địch  </td>
+    </tr>
+</table>
 </body>
 </html>
