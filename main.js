@@ -37,10 +37,11 @@ function shoot() {
 function bossShoot() {
     if ((susu.score > 16) && (susu.score < 41)) {
         boss.fire();
+        bulBoss.play();
     }
 
     if ((susu.score > 60) && (susu.score < 120)) {
-
+        bulBoss.play();
         boss.fire();
 
     }
@@ -76,13 +77,14 @@ function drawBullet() {
 function drawBulletBoss() {
 
     if (boss.status === 1 && bulletBoss.length > 3 && susu.score > 15) {
+
         for (let i = 0; i < bulletBoss.length; i++) {
             bulletBoss[i].move();
             if ((bulletBoss[i].x < -200) || (bulletBoss[i].x > 1700) || (bulletBoss[i].y > 900)) {
                 bulletBoss.splice(bulletBoss.indexOf(bulletBoss[i]), 1)
             }
             bulletBoss[i].draw(ctx);
-            bulBoss.play()
+
         }
     }
 }
@@ -225,13 +227,7 @@ function checkEnd() {
 
 function checkWin() {
     if (boss.status === 3 && susu.score > 60) {
-        function a() {
-            alert("You Winnnnn!")
-            location.reload()
-        }
-
-        setTimeout(a, 1)
-        start()
+        location.replace("index2.html")
     }
 }
 
@@ -281,13 +277,14 @@ let bullet;
 var enemy;
 var boss;
 let bulletBoss;
-let boom= new Audio('enemyBoom.mp3')
-let boom1= new Audio('enemyBoom2.mp3')
+let boom = new Audio('enemyBoom.mp3')
+let boom1 = new Audio('enemyBoom2.mp3')
 let bulBoss = new Audio('bulletBoss.mp3')
 let bossDeath = new Audio('bossDeath.mp3')
 let hit = new Audio('hit.mp3')
 let hit2 = new Audio('hit2.mp3')
 let hit3 = new Audio('hit3.mp3')
+
 start();
 play();
 setInterval(shoot, 500)
