@@ -11,7 +11,7 @@
             color: yellow;
             position: relative;
             top: 30px;
-            left: 160px;
+            left: 200px;
         }
         td{
             border: 1px solid black;
@@ -19,19 +19,32 @@
             text-align: center;
             font-size: 30px;
             background-color: chartreuse;
-            border-radius: 5px;
+            border-radius: 20px;
         }
     </style>
 </head>
 <body>
-<audio id="myAudio" controls autoplay style="display: none">
+<audio id="myAudio" autoplay >
+
     <source src="startSound.mp3" type="audio/mpeg">
 </audio>
+
 <h1><a style="text-decoration: none" href="index1.html">Start game</a></h1> <br>
 <table>
     <tr>
-        <td>Luật chơi <br>Dùng phím mũi tên để di chuyển <br> Tiêu diệt mọi kẻ địch để chiến thắng <br> Đừng để trúng đạn hoặc va vào kẻ địch  </td>
+        <td>Luật chơi <br>Dùng phím mũi tên để di chuyển <br> Tiêu diệt mọi kẻ địch để chiến thắng <br> Đừng để trúng đạn hoặc va vào kẻ địch
+            <br> Thêm 1 điều quan trọng nữa : anh em <br> nhìn thấy hiện lên bảng xin quyền dùng micro <br> thì ấn ok nhé cho có nhạc :< </td>
     </tr>
 </table>
+<script>
+    navigator.mediaDevices.getUserMedia({ audio: true }).then(function (stream) {
+
+        var x = document.getElementById("myAudio");
+        x.play();
+
+        // stop microphone stream acquired by getUserMedia
+        stream.getTracks().forEach(function (track) { track.stop(); });
+    });
+</script>
 </body>
 </html>

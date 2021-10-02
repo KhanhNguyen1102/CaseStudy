@@ -13,8 +13,23 @@
 
 
 <body onload="doReady()">
+<audio id="myAudio" autoplay >
+    <source src="mainSound.mp3" type="audio/mpeg">
+</audio>
+<audio id="boss" src="bulletBoss.mp3"></audio>
+<audio id="boom" src="enemyBoom.mp3"></audio>
 <canvas id="myCanvas" width="1500" height="700" ></canvas>
 
+<script>
+    navigator.mediaDevices.getUserMedia({ audio: true }).then(function (stream) {
+
+        var x = document.getElementById("myAudio");
+        x.play();
+
+        // stop microphone stream acquired by getUserMedia
+        stream.getTracks().forEach(function (track) { track.stop(); });
+    });
+</script>
 <script src="Plane.js"></script>
 <script src="bullet.js"></script>
 <script src="enemy.js"></script>

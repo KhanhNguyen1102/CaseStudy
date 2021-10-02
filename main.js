@@ -82,6 +82,7 @@ function drawBulletBoss() {
                 bulletBoss.splice(bulletBoss.indexOf(bulletBoss[i]), 1)
             }
             bulletBoss[i].draw(ctx);
+            bulBoss.play()
         }
     }
 }
@@ -107,16 +108,19 @@ function checkBulletHitEnemy() {
                     enemy[j].status = 2
                     enemy[j].img = "boomEnemy1.png"
                     susu.score++;
+                    boom.play()
                 } else if (((bullet[i].y >= enemy[j].y + 30) && (bullet[i].y <= enemy[j].y + 73)) && ((bullet[i].x >= enemy[j].x - 41) && (bullet[i].x <= enemy[j].x + 77))) {
                     bullet[i].status = false;
                     enemy[j].status = 2
                     enemy[j].img = "boomEnemy1.png"
                     susu.score++;
+                    boom.play()
                 } else if (((bullet[i].y >= enemy[j].y - 72) && (bullet[i].y <= enemy[j].y + 72)) && ((bullet[i].x >= enemy[j].x + 75) && (bullet[i].x <= enemy[j].x + 79))) {
                     bullet[i].status = false;
                     enemy[j].status = 2
                     enemy[j].img = "boomEnemy1.png"
                     susu.score++;
+                    boom.play()
                 }
             }
         }
@@ -130,18 +134,26 @@ function checkPlaneHitEnemy() {
                 enemy[i].status = 2
                 enemy[i].img = "boomEnemy1.png"
                 susu.live--;
+                boom1.play();
+                hit.play();
             } else if ((susu.x >= enemy[i].x - 112) && (susu.x <= enemy[i].x) && (susu.y >= enemy[i].y - 61) && (susu.y <= enemy[i].y + 72)) {
                 enemy[i].status = 2
                 enemy[i].img = "boomEnemy1.png"
                 susu.live--;
+                boom1.play();
+                hit.play();
             } else if ((susu.x >= enemy[i].x - 112) && (susu.x <= enemy[i].x + 77) && (susu.y >= enemy[i].y) && (susu.y <= enemy[i].y + 72)) {
                 enemy[i].status = 2
                 enemy[i].img = "boomEnemy1.png"
                 susu.live--;
+                boom1.play();
+                hit.play();
             } else if ((susu.x >= enemy[i].x) && (susu.x <= enemy[i].x + 77) && (susu.y >= enemy[i].y - 61) && (susu.y <= enemy[i].y + 72)) {
                 enemy[i].status = 2
                 enemy[i].img = "boomEnemy1.png"
                 susu.live--;
+                boom1.play();
+                hit2.play();
             }
         }
     }
@@ -151,6 +163,7 @@ function checkPlaneHitBoss() {
     if (boss.status) {
         if ((susu.x >= boss.x - 112) && (susu.x <= boss.x + 228) && (susu.y >= 0) && (susu.y <= boss.y + 215)) {
             susu.live--;
+            hit2.play()
         }
     }
 }
@@ -166,6 +179,7 @@ function checkBulletHitBoss() {
                 boss.img = "boom1.png";
                 boss.status = 2;
                 susu.score += 25;
+                bossDeath.play();
             }
         }
     }
@@ -177,6 +191,7 @@ function checkBulletHitPlane() {
             if ((bulletBoss[i].x >= susu.x - 45) && (bulletBoss[i].x <= susu.x + 112) && (bulletBoss[i].y >= susu.y - 45) && (bulletBoss[i].y <= susu.y + 61)) {
                 if (bulletBoss[i].status) {
                     susu.live--;
+                    hit3.play();
                 }
                 bulletBoss[i].status = false;
             }
@@ -200,7 +215,7 @@ function checkEnd() {
     if (susu.live === 0) {
         function a() {
             alert("Game Over")
-            location.reload()
+            location.replace("index.html")
         }
 
         setTimeout(a, 100)
@@ -266,7 +281,13 @@ let bullet;
 var enemy;
 var boss;
 let bulletBoss;
-
+let boom= new Audio('enemyBoom.mp3')
+let boom1= new Audio('enemyBoom2.mp3')
+let bulBoss = new Audio('bulletBoss.mp3')
+let bossDeath = new Audio('bossDeath.mp3')
+let hit = new Audio('hit.mp3')
+let hit2 = new Audio('hit2.mp3')
+let hit3 = new Audio('hit3.mp3')
 start();
 play();
 setInterval(shoot, 500)
