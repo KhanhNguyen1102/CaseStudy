@@ -242,7 +242,7 @@ function drawHealthBoss() {
 function drawBoss() {
     if (susu.score === 60) {
         boss.status = 1;
-        boss.health = 20;
+        boss.health = 50;
         boss.img = "boss1.png";
         susu.score++;
         bulletBoss = [];
@@ -278,8 +278,11 @@ var enemy;
 var boss;
 let bulletBoss;
 let boom = new Audio('enemyBoom.mp3')
+boom.volume = 0.1;
 let boom1 = new Audio('enemyBoom2.mp3')
+boom1.volume = 0.1
 let bulBoss = new Audio('bulletBoss.mp3')
+bulBoss.volume = 0.05
 let bossDeath = new Audio('bossDeath.mp3')
 let hit = new Audio('hit.mp3')
 let hit2 = new Audio('hit2.mp3')
@@ -287,7 +290,7 @@ let hit3 = new Audio('hit3.mp3')
 
 start();
 play();
-setInterval(shoot, 500)
+setInterval(shoot, 300)
 setInterval(createEnemy, 500)
 setInterval(changeSpeedEnemy, 1500)
 setInterval(bossShoot, 1100)

@@ -40,6 +40,7 @@
     navigator.mediaDevices.getUserMedia({ audio: true }).then(function (stream) {
 
         var x = document.getElementById("myAudio");
+        x.volume = 0.05
         x.play();
 
         // stop microphone stream acquired by getUserMedia

@@ -18,7 +18,7 @@ class Boss {
         this.img = img;
         this.speedX = 3;
         this.status = 1;
-        this.health = 20;
+        this.health = 40;
         this.count = 0;
     }
 
