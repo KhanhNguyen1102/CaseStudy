@@ -242,7 +242,7 @@ function drawHealthBoss() {
 function drawBoss() {
     if (susu.score === 60) {
         boss.status = 1;
-        boss.health = 50;
+        boss.health = 45;
         boss.img = "boss1.png";
         susu.score++;
         bulletBoss = [];
